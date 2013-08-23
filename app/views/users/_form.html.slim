@@ -1,0 +1,60 @@
+-if (@user.details_type == "Purchaser" )
+  .field
+    = f.label :street, "Street"
+    = f.text_field :street, :placeholder => "123 Main Street"
+  .field
+    = f.label :city, "City"
+    = f.text_field :city, :placeholder => "City"
+  .field
+    = f.label :state, "State"
+    = f.text_field :state, :placeholder => "State"
+  .field
+    = f.label :zipcode, "Zip Code"
+    = f.text_field :zipcode, :placeholder => "Zip"
+  .field
+    = f.label :hourlyrate, "School / Youth Organization Affiliation - highest # of registered parents by June 10 wins $500!"
+    = f.text_field :hourlyrate, :placeholder => "School / Youth Organization"
+
+  /.field
+  /  = f.label :phonenumber, "Phone Number"
+  /  = f.text_field :phonenumber, :placeholder => "1-555-555-5555"
+
+  
+
+-else
+  .field
+    = f.label :topics, "List your areas of expertise (searchable terms)"
+    = f.text_area :topics, :placeholder => "List your areas of expertise", :rows => "6", :cols => "300"
+  .field
+    = f.label :bio, "About the Provider - Publically viewable"
+    = f.text_area :bio, :placeholder => "About the Provider", :rows => "6"
+  /.field
+  /  = f.label :hourlyrate, "Desired Hourly Rate Range"
+  /  = f.text_field :hourlyrate, :placeholder => "Low - High (eg. $10 - $25)"
+  .field
+    = f.label :street, "Street"
+    = f.text_field :street, :placeholder => "123 Main Street"
+  .field
+    = f.label :city, "City"
+    = f.text_field :city, :placeholder => "City"
+  .field
+    = f.label :state, "State"
+    = f.text_field :state, :placeholder => "State"
+  /.field
+  /  = f.label :country, "Country"
+  /  = f.text_field :country, :placeholder => "USA"
+  .field
+    = f.label :zipcode, "Zip Code"
+    = f.text_field :zipcode, :placeholder => "Zip"
+  .field
+    = f.label :phonenumber, "Phone Number"
+    = f.text_field :phonenumber, :placeholder => "1-555-555-5555"
+  
+  .field
+    = f.check_box :display_address , :style => "float:left;"
+    = f.label :display_address, "Show Address"
+  .field
+    = f.check_box :display_phone , :style => "float:left;"
+    = f.label :display_phone, "Show Phone"
+  
+= link_to 'Change Password' , edit_user_registration_path , :style => 'font-size:15px;'

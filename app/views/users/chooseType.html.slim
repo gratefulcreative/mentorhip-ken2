@@ -1,0 +1,15 @@
+#mainbody.top_margin style="width:80%;background-color:#EEF6F6; box-shadow: 0 0 1em gray; margin:0 auto"	
+	.container-fluid  
+		br/
+		br/
+		br/	
+		br/
+		br/
+		br/
+		h1.text-center What kind of User are you?
+		.row.span6 style="margin-left: 247px;"
+		    .text-center
+		        = form_tag users_choseType_path do
+				    = submit_tag "Company" , :class=>"btn"
+				    = submit_tag "Individual", :class=>"btn"
+				    = submit_tag "Parent/Student" , :class=>"btn" 

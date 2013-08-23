@@ -1,0 +1,184 @@
+.search
+  h1 style="text-align: center;font-weight:bold" Discover and connect with kids classes, <br /> camps, programs, mentors and events  
+  /h2 style="text-align: center" camps, programs, mentors and events  
+  br/
+  br/
+  .indexSearchBar= search_form_for @q, :url => search_path, :html => {:method => :get, :class => "form-inline"} do |f| 
+    = f.text_field :topics_cont,  :class=>"input-xlarge",  :placeholder=>"What kind of course do you want?" 
+    = text_field_tag :within , params[:within] , :class=>"input-xlarge" ,  :placeholder=>"How many miles from..." 
+    = text_field_tag :city, params[:city] ,:class=>"input-xlarge",  :placeholder=>"...which City?"
+    = f.submit "Search" ,:class=>"btn"
+
+.container-categories
+  h2 Categories
+  .row-fluid
+    .span4
+      .categories style="background: url('/assets/1.jpg') repeat scroll 50% 50% transparent;"
+        .categoriesName
+          h3.category 
+            =link_to "Sports", "/search?utf8=✓&q%5Btopics_cont%5D=sports" 
+        /.categoriesNameBackground2 style="display: none;"
+        /  ul
+        /    li.noNode
+        /      h3.detailsName
+        /          li=link_to "Sports", "/search?utf8=✓&q%5Btopics_cont%5D=sports" 
+            /    =link_to "Soccer", ""
+            /li.noNode
+            /  h3.detailsName
+            /    =link_to "Basketball", ""
+
+    .span4
+      .categories style=" background: url('/assets/5.jpg') repeat scroll 50% 50% transparent;"
+        .categoriesName
+          h3.category
+           =link_to "Camps", "/search?utf8=✓&q%5Btopics_cont%5D=camps" 
+                   /.categoriesNameBackground2
+        /  ul
+        /   li.noNode
+        /      h3.detailsName
+        /        =link_to "Overnight Camps", ""
+        /    li.noNode
+        /      h3.detailsName
+        /        =link_to "Outdoor Camps", ""
+        /    li.noNode
+        /      h3.detailsName
+        /        =link_to "Music Camps", ""
+        
+    .span4
+      .categories style=" background: url('/assets/3.jpg') repeat scroll 50% 50% transparent;"
+        .categoriesName
+          h3.category
+            =link_to "Music", "/search?utf8=✓&q%5Btopics_cont%5D=music" 
+        /.categoriesNameBackground2
+        /  ul
+        /    li.noNode
+        /      h3.detailsName
+        /        =link_to "Violin", ""
+        /    li.noNode
+        /      h3.detailsName
+        /        =link_to "Piano", ""
+        /    li.noNode
+        /      h3.detailsName
+        /        =link_to "Voice", ""
+  .row-fluid
+    .span4
+      .categories style=" background: url('/assets/4.jpg') repeat scroll 50% 50% transparent;"
+        .categoriesName
+          h3.category
+            =link_to "Academics", "/search?utf8=✓&q%5Btopics_cont%5D=academics" 
+        /.categoriesNameBackground2
+        /  ul
+        /    li.noNode
+        /      h3.detailsName
+        /        =link_to "Math Reading", ""
+        /    li.noNode
+        /      h3.detailsName
+        /        =link_to "Test Prep", ""
+ 
+    .span4
+      .categories style=" background: url('/assets/2.jpg') repeat scroll 50% 50% transparent;"
+        .categoriesName
+          h3.category
+            =link_to "Dance and Gymnastics", "/search?utf8=✓&q%5Btopics_cont%5D=dance" 
+
+        /.categoriesNameBackground2 style="display: none;"
+        /  ul
+        /    li.noNode
+        /      h3.detailsName
+        /        =link_to "Ballet", ""
+        /    li.noNode
+        /      h3.detailsName
+        /        =link_to "Tap Dance", ""
+        /    li.noNode
+        /      h3.detailsName
+        /        =link_to "Gymnastics", ""
+
+    .span4
+      .categories style=" background: url('/assets/6.jpg') repeat scroll 50% 50% transparent;"
+        .categoriesName
+          h3.category
+            =link_to "Arts and Crafts", "/search?utf8=✓&q%5Btopics_cont%5D=drawing" 
+        /.categoriesNameBackground2
+        /  ul
+        /    li.noNode
+        /      h3.detailsName
+        /        =link_to "Drawing", ""
+        /    li.noNode
+        /      h3.detailsName
+         /       =link_to "Painting", ""
+        /    li.noNode
+        /      h3.detailsName
+         /       =link_to "Cooking", ""
+
+  
+  /.container
+  /h2 Featured Providers
+  /ul.thumbnails
+  /  li style="width:30%"
+  /    .thumbnail        
+  /      =image_tag 'signup-interests.gif', :alt=> "Discover new interests"
+  /      h1 Discover new interests
+  /      h4 Browse classes, programs, camps and events available in your area.
+  /  li style="width:30%"
+  /    .thumbnail
+  /      =image_tag 'signup-experts.gif' ,:alt=> "Connect with experts"        
+  /      h1 Connect with experts
+  /      h4 Connect with experts, mentors, and class teachers who teach what they love.
+  /  li style="width:30%"
+  /    .thumbnail
+  /      =image_tag 'signup-talents.gif' , :alt=>"Develop new talents and abilities"        
+  /      h1 Develop new talents and abilities
+  /      h4 Develop your child’s skills and abilities to help them develop talents, gain confidence, and /achieve their goals.
+
+
+.hero style="box-shadow: 0 0 1em gray;"
+  .container.home-nav style="margin:0 auto;"
+    .text-center
+       / =image_tag 'companies.png'   , :class => 'pull-right' , :alt => "Classes, Camps, Programs, Mentors, Events"
+       / =image_tag 'Bird-family.png' , :id => 'bird' , :alt => "Family" , :height => "192" , :width => "303"
+     
+    .row-fluid
+      .span8.offset2.text-center
+        h1 Discover new interests, Develop new talents, Enrich your lives!
+      .span12.text-center
+        h2 Sign Up Free for our Public Beta Launch
+      .span5.offset1.text-center
+        =link_to 'Parents' ,  new_user_registration_path , :class => 'btn-large btn-block btn-warning'
+        h3 Discover and connect with kid's classes, camps, programs, events, and more
+      .span5.text-center
+        =link_to 'Providers' ,  new_user_registration_path(:type => 'provider') , :class => 'btn-large btn-block btn-info'
+        h3 Teach what you love.
+
+.container
+  ul.thumbnails
+    li.span4
+      .thumbnail        
+        =image_tag 'signup-interests.gif', :alt=> "Discover new interests"
+        h1 Discover new interests
+        h4 Browse classes, programs, camps and events available in your area.
+    li.span4
+      .thumbnail
+        =image_tag 'signup-experts.gif' ,:alt=> "Connect with experts"        
+        h1 Connect with experts
+        h4 Connect with experts, mentors, and class teachers who teach what they love.
+    li.span4
+      .thumbnail
+        =image_tag 'signup-talents.gif' , :alt=>"Develop new talents and abilities"        
+        h1 Develop talents and abilities
+        h4 Develop your child’s skills and abilities to help them develop talents, gain confidence, and achieve their goals.
+    li.span4
+      .thumbnail
+        =image_tag 'signup-enrich.gif' , :alt=> "Enrich your lives"
+        h1 Enrich your lives
+        h4 Enable your child to enjoy a new activity and make new friends.
+    li.span4
+      .thumbnail
+        =image_tag 'signup-reputation.gif' , :alt => "Reputation based"        
+        h1 Reputation based
+        h4 Coaches, teachers, and mentors develop an online reputation tied to real customers.
+    li.span4
+      .thumbnail
+        =image_tag 'signup-easy.gif' , :alt=> "Easy and convenient"
+        
+        h1 Easy and convenient
+        h4 Connect with ease, no more jumping between program guides and websites. Class schedules, waivers, and purchasing will be available soon.

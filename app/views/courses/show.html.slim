@@ -1,0 +1,83 @@
+.container-fluid style="background-color:#EEF6F6; box-shadow: 0 1em 1em gray;padding-bottom:180px;margin:90px 65px 15px;"
+  - if @course.user == current_user
+    .row style="padding-top: 40px;"
+      .span7
+        p#notice = notice
+        p
+          strong Name: 
+          = @course.name
+        p
+          strong Offered by: 
+          =link_to @course.user.name, @course.user
+        p
+          strong Category: 
+          = @course.category
+        p
+          strong Description: 
+          = @course.description
+        p
+          strong Price: 
+          = @course.price
+        p
+          strong Ongoing: 
+          = @course.ongoing ? 'Yes' : 'No'
+        p
+          strong Startdate: 
+          = @course.startdate.strftime('%b %d , %Y')
+        p
+          strong Enddate: 
+          = @course.enddate.strftime('%b %d , %Y')
+        p
+          = link_to 'Edit  |', edit_course_path(@course) 
+          = link_to ' Back', courses_path
+      .span4 style="margin-top: 20px;"
+        .alert.alert-info
+          h4 Course Times
+          .course-times
+            - if @coursetimes.empty?
+              ' No Course Times Specified Yet
+            - else
+              = render @coursetimes
+      .span4 style="margin-top: 20px;" 
+          .alert
+            h5 Create a new time
+            ul
+              = render 'coursetimes/form'
+  - else
+    .row style="padding-top: 40px;"
+      .span7
+        p#notice = notice
+        p
+          strong Name: 
+          = @course.name
+        p
+          strong Offered by: 
+          =link_to @course.user.name, @course.user
+        p
+          strong Category: 
+          = @course.category
+        p
+          strong Description: 
+          = @course.description
+        p
+          strong Price: 
+          = @course.price
+        p
+          strong Ongoing: 
+          = @course.ongoing ? 'Yes' : 'No'
+        p
+          strong Startdate: 
+          = @course.startdate.strftime('%b %d , %Y')
+        p
+          strong Enddate: 
+          = @course.enddate.strftime('%b %d , %Y')
+      .span4 style="margin-top: 20px;"
+        .alert.alert-info
+          h4 Course Times
+          .course-times
+            - if @coursetimes.empty?
+              ' No Course Times Specified Yet
+            - else
+              = render @coursetimes
+
+        

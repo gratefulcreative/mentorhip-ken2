@@ -1,0 +1,120 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      button.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse" type="button"
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a#logo href="/home/index"
+        = image_tag 'MH-logo.png' , :alt => 'MentorHip' , :class => 'visible-desktop'
+        = image_tag 'MH-logo-small.png' , :alt => 'MentorHip' , :class => 'hidden-desktop'
+      .nav-collapse.collapse
+        ul.nav
+          .row-fluid
+            li= search_form_for @q, :url => search_path, :html => {:method => :get, :class=>"form-search"}  do |f|
+                .input-append style="margin-top:10px" 
+                  =f.text_field :topics_cont, :class=>"search-query input-xlarge", :placeholder=>"Search for a class, program, camp, or mentor"
+                  =f.submit "Search", :class=>"btn", :name=>nil
+
+          .row-fluid
+            ul.noNode
+              li.pull-left =link_to "Sports", "/search?utf8=✓&q%5Btopics_cont%5D=sports", :class=>"headerCat"
+              li.pull-left =link_to "Camps", "/search?utf8=✓&q%5Btopics_cont%5D=camps",:class=>"headerCat"
+              li.pull-left =link_to "Music", "/search?utf8=✓&q%5Btopics_cont%5D=Music",:class=>"headerCat"
+              li.pull-left =link_to "Academics", "/search?utf8=✓&q%5Btopics_cont%5D=academics",:class=>"headerCat"
+              li.pull-left =link_to "Dance", "/search?utf8=✓&q%5Btopics_cont%5D=dance",:class=>"headerCat"
+              / li.pull-left =link_to "Arts", "/search?utf8=✓&q%5Btopics_cont%5D=arts",:class=>"headerCat"
+              li.pull-left =link_to "All", "/search?utf8=✓&q%5Btopics_cont%5D=",:class=>"headerCat"
+
+ 
+            /li.dropdown.pull-left
+                a.dropdown-toggle data-toggle="dropdown" href="/search?utf8=✓&q%5Btopics_cont%5D=Academics" style="margin-right:20px;color:#ffffff;font-size:18px;"
+                  |Academics               
+                ul.dropdown-menu
+                  li=link_to "Math", "/search?utf8=✓&q%5Btopics_cont%5D=Math"
+                  li=link_to "Reading", "/search?utf8=✓&q%5Btopics_cont%5D=Reading"
+                  li=link_to "Tutoring", "/search?utf8=✓&q%5Btopics_cont%5D=Tutoring"
+                  li=link_to "See more...", "/search?utf8=✓&q%5Btopics_cont%5D=Academics" 
+            /li.dropdown.pull-left           
+                a.dropdown-toggle data-toggle="dropdown" href="#" style="margin-right:20px;color:#ffffff;font-size:18px;"
+                  |Sports
+                ul.dropdown-menu
+                  li=link_to "Soccer", "/search?utf8=✓&q%5Btopics_cont%5D=Soccer"
+                  li=link_to "Basketball", "/search?utf8=✓&q%5Btopics_cont%5D=basketball"
+                  li=link_to "Baseball", "/search?utf8=✓&q%5Btopics_cont%5D=baseball"
+                  li=link_to "Martial Arts", "/search?utf8=✓&q%5Btopics_cont%5D=Martial Arts"
+                  li=link_to "See more...", "/search?utf8=✓&q%5Btopics_cont%5D=sports" 
+
+            /li.dropdown.pull-left
+                a.dropdown-toggle data-toggle="dropdown" href="#" style="margin-right:20px;color:#ffffff;font-size:18px;"
+                  |Camps
+                ul.dropdown-menu
+                  li=link_to "Overnight Camps", "/search?utf8=✓&q%5Btopics_cont%5D=overnight camps"
+                  li=link_to "Outdoor Camps", "/search?utf8=✓&q%5Btopics_cont%5D=outdoor camps"
+                  li=link_to "Music Camps", "/search?utf8=✓&q%5Btopics_cont%5D=music camps"
+                  li=link_to "See more...", "/search?utf8=✓&q%5Btopics_cont%5D=camps" 
+
+            /li.dropdown.pull-left
+                a.dropdown-toggle data-toggle="dropdown" href="#" style="margin-right:20px;color:#ffffff;font-size:18px;"
+                  |Dance and Gymnastics
+                ul.dropdown-menu
+                  li=link_to "Ballet", "/search?utf8=✓&q%5Btopics_cont%5D=ballet"
+                  li=link_to "Tap Dance", "/search?utf8=✓&q%5Btopics_cont%5D=tapdance"
+                  li=link_to "Gymnastics", "/search?utf8=✓&q%5Btopics_cont%5D=gymnastics"
+                  li=link_to "See more...", "/search?utf8=✓&q%5Btopics_cont%5D=dance" 
+
+            /li.dropdown.pull-left
+                a.dropdown-toggle data-toggle="dropdown" href="#" style="margin-right:20px;color:#ffffff;font-size:18px;"
+                  |Music
+                ul.dropdown-menu
+                  li=link_to "Piano", "/search?utf8=✓&q%5Btopics_cont%5D=piano"
+                  li=link_to "Violin", "/search?utf8=✓&q%5Btopics_cont%5D=violin"
+                  li=link_to "Voice", "/search?utf8=✓&q%5Btopics_cont%5D=voice"
+                  li=link_to "See more...", "/search?utf8=✓&q%5Btopics_cont%5D=music" 
+
+            /li.dropdown.pull-left
+                a.dropdown-toggle data-toggle="dropdown" href="#" style="color:#ffffff;font-size:18px;"
+                  |Arts and Crafts
+                ul.dropdown-menu
+                  li=link_to "Drawing", "search?utf8=✓&q%5Btopics_cont%5D=drawing"
+                  li=link_to "Patinting", "search?utf8=✓&q%5Btopics_cont%5D=patinting"
+                  li=link_to "Cooking", "search?utf8=✓&q%5Btopics_cont%5D=cooking"
+                  li=link_to "See more...", "search?utf8=✓&q%5Btopics_cont%5D=arts" 
+            
+
+        ul.nav.pull-right
+          li
+              =link_to 'Home' , home_index_path
+          - unless user_signed_in?            
+            ul.nav.nav-tabs
+               li.dropdown
+                 a.dropdown-toggle data-toggle="dropdown" href="#"
+                   |Sign Up
+                 ul.dropdown-menu
+                   li=link_to 'Parents' ,  new_user_registration_path 
+                   li=link_to 'Providers' ,  new_user_registration_path(:type => 'provider') 
+
+            li= link_to "Log in", "#", {:title=>"Log in", :id=>"login_btn", :'data-placement'=>"bottom"} 
+            .hide#login_form
+              = form_tag :controller => "users/sessions", :action => "create", :method => "post" do
+                p
+                  = text_field_tag :email, params[:email], :placeholder=>"Email", :class=>"input-medium"
+                p
+                  = password_field_tag :password, '', :placeholder => "Password", :class=>"input-medium"
+                p
+                  = check_box_tag 'remember_me', true, true
+                  |  Remember me
+                p.button  = submit_tag "Log in"
+				<br />
+              =link_to image_tag('facebook_connec.jpg'),user_omniauth_authorize_path(:facebook)  
+          - else
+            li.dropdown
+              a.dropdown-toggle data-toggle="dropdown" href="#"
+                = current_user.email
+                b.caret
+              ul.dropdown-menu
+                li= link_to 'View Profile', current_user
+                li= link_to 'Edit Profile', edit_user_path(current_user)
+                - unless current_user.details.is_a?(Purchaser)
+                  li= link_to "Manage Courses", courses_path
+                li= link_to "Log out", destroy_user_session_path, :method => :delete

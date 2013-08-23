@@ -1,0 +1,65 @@
+
+<div class="container-fluid" style="background-color:#EEF6F6; box-shadow: 0 1em 1em gray;padding-bottom:180px;margin:90px 65px 15px;">
+
+  <div class="well" style="margin:20px 0px 0px 245px;width:685px;">
+    
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name),:html => { :class => 'form-horizontal form-signup signup-shadow'}) do |f| %>
+      <h2 class="signup_color">Sign up</h2>
+      <%= devise_error_messages! %>
+      <% if params[:type] == 'provider' %>
+        <input type="hidden" name="type" value="provider">
+      <%end%>
+      <div class="control-group">
+        <label class="control-label signup_color " for="inputEmail">Email</label>
+        <div class="controls">    
+          <%= f.email_field :email , :class =>"required"%>
+       </div>
+      </div>
+    
+      <div class="control-group">
+        <label class="control-label signup_color" for="inputEmail">Password</label>
+        <div class="controls">      
+          <%= f.password_field :password , :class =>"required" , :minlength => '5'%>
+        </div>
+      </div>
+    
+      <div class="control-group">
+        <label class="control-label signup_color" for="inputEmail">Password Confimation</label>
+        <div class="controls">      
+          <%= f.password_field :password_confirmation , :class =>"required" , :minlength => '5'%>
+        </div>
+      </div>
+      <% if @provider.present? %>
+        <input type="hidden" name="provider" value="true">
+      <%elsif params[:provider].present?%>
+        <input type="hidden" name="provider" value="<%= params[:provider].present? %>">
+      <%end%>
+
+      <%if @provider.present? || params[:provider].present? || params[:provider_signup] == 'provider'%>
+        <div class="control-group">
+          <label class="control-label signup_color" for="inputEmail">Provider Type</label>
+          <div class="controls">              
+            <%= f.radio_button :details_type ,  'Company' ,:checked =>true%> Company
+            <%= f.radio_button :details_type ,  'Individual' %> Individual
+          </div>
+        </div>
+      <%end%>
+      
+      
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit "Sign Up"  , :class => 'btn'%>        
+        </div>
+      </div>
+    <% end %>
+    <div>
+      <%unless @provider.present?%>
+        <%=link_to image_tag('facebook_connec.jpg'),user_omniauth_authorize_path(:facebook) , :style => "margin-left: 178px;"%>
+      <%end%>
+      <br/>
+      <%= render "users/shared/links"%>
+    </div>
+  </div>
+</div>
+
+ 

@@ -1,0 +1,168 @@
+#mainBody
+  .container
+    .container-fluid style="background-color:#EEF6F6; box-shadow: 0 0 1em gray;padding-bottom:20px;"
+      .row-fluid style="margin-top:9%;"
+        .pull-left
+          br/
+          h2= @user.name
+          / h4= @user.street +  @user.city
+          br/
+      .row-fluid
+        #gallery.span3.pull-left
+          =image_tag @user.avatar , :height => '100' , :width => '200'
+          -if @user.details.is_a?(Company) || @user.details.is_a?(Individual)
+            h5.row style="margin-left: 1px;"
+              | Total Ratings:   #{Rate.where(:rateable_id => params[:id]).count}
+            -if user_signed_in? 
+              h5 My Rating 
+              = ratings_for @user ,:remote_options => {:url => rate_user_path(@user)} ,:show_user_rating => true
+              h5 Average Rating
+              = ratings_for User.find(params[:id]) , :static
+            -else
+                h5 Average Rating
+                = ratings_for User.find(params[:id]) , :static
+        - if @user.details.is_a?(Individual)
+          .span8.pull-left
+            ul.nav.nav-tabs
+              li.active
+                a data-toggle="tab" href="#discription" Description
+              /li
+              /  a data-toggle="tab" href="#rating" Rating
+              /li
+              /  a data-toggle="tab" href="#calendar" Calendar
+            .tab-content.tab-fixHeight
+              
+              #discription.tab-pane.fade.active.in
+                /p
+                /  font face="veranda" size="5" <b> #{@user.name}</b><br />
+                p
+                  font face="verdana" size="3"  <br /> 
+
+                  a href=url_with_protocol(@user.details.weburl) target="_blank" =@user.details.weburl
+                  <br /> #{@user.street} <br /> #{@user.city} #{@user.state} #{@user.zipcode} #{@user.country} <br /> #{@user.phonenumber}  <br /> <br/ > <b>About the provider:</b> <br /> #{@user.bio} <br />
+                
+                /  font face="verdana" size="3"  <b>Email:</b> #{@user.email} <br /> <b>Expertise: </b>#{@user.topics} <br /> <b>Address: </b>#{@user.street} #{@user.city} #{@user.state}, #{@user.country}
+                
+                p
+                  font face="verdana" size="3"
+                small
+
+                = gmaps({                                                   \
+                   "map_options" => {"auto_zoom" => false, "zoom" => 15 }, \
+                   "markers"     => {"data" => @json }                      \
+                })          
+
+                br/
+                br/
+
+        - elsif @user.details.is_a?(Company)|| @user.details.is_a?(Individual)
+          .span8.pull-left
+            ul.nav.nav-tabs
+              li.active
+                a data-toggle="tab" href="#discription" Description
+              /li
+              /  a data-toggle="tab" href="#rating" Rating
+              /li
+              /  a data-toggle="tab" href="#calendar" Calendar
+            .tab-content.tab-fixHeight
+              b About the provider Company:
+
+              #discription.tab-pane.fade.active.in
+                p
+                  -if @user.details.present? && @user.details.weburl.present?
+                    / font face="verdana" size="3"  website: #{@user.details.weburl}
+                    font face="verdana" size="3"  <br /> 
+
+                    /=link_to @user.details.weburl, url_with_protocol(@user.details.weburl) :data=>{:target=>"_blank"}
+                    a href=url_with_protocol(@user.details.weburl) target="_blank" =@user.details.weburl
+                    /a.btn data-target="#myModal" data-toggle="modal" href=url_with_protocol(@user.details.weburl) = "Show"
+                    /#myModal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+                    /  .modal-header
+                    /    button.close aria-hidden="false" data-dismiss="modal" type="button" ="×"
+                    /    h3#myModalLabel Website.
+                    /  .modal-body
+
+
+                    <br /> #{@user.street} <br /> #{@user.city} #{@user.state} #{@user.zipcode} #{@user.country} <br /> #{@user.phonenumber}  <br /> <br/ > <b>About the provider:</b> <br /> #{@user.bio} <br />
+                
+
+                  / br/
+                  /=@user.get_address
+                  /br/
+                  /=@user.get_phone 
+                p
+                  font face="verdana" size="3"
+                small
+                = gmaps({                                                   \
+                   "map_options" => {"auto_zoom" => false, "zoom" => 15 }, \
+                   "markers"     => {"data" => @json }                      \
+                })          
+        
+                br/
+                br/
+
+        - else
+          .span8.pull-left
+              ul.nav.nav-tabs
+                li.active
+                  a data-toggle="tab" href="#profile" Parents Profile
+              .tab-content.tab-fixHeight
+                
+                #profile.tab-pane.fade.active.in
+                  p
+                    font face="verdana" size="3"  Email: #{@user.email}
+                    Address: #{@user.get_address if @user.display_address} 
+                  p
+                    font face="verdana" size="4" <b>School / Youth Organization Affiliation:</b><br>#{@user.hourlyrate} <br><br> 
+                  p
+                    font face="verdana" size="5" Spread the word! The School / Org with the most registered parents by June 6 wins $500!
+                  p
+                    font face="verdana" size="3"
+
+              
+          
+            
+  - if @user.details.is_a?(Company)|| @user.details.is_a?(Individual)
+    .container style="margin:20px auto 20px auto;"
+      .container-fluid style="background-color:#EEF6F6; box-shadow: 0 0 1em gray;"
+        hr.soft
+          .span10.pull-left
+            -if @user == current_user
+              .pull-right =link_to "Manage Courses", courses_path, :class=>"btn btn-primary"
+            h2 Courses List 
+
+            #accordion2.accordion
+              .accordion-group
+                .accordion-heading
+                  table.table.table-striped
+                    tr.info
+                      th Course
+                      th Date
+                      th Mon
+                      th Tues
+                      th Wed
+                      th Thurs
+                      th Fri
+                      th Sat
+                      th Sun
+                      th Price
+                    - @user.courses.each do |course|
+                      tr
+                        td=link_to course.name, course_path(course.id)
+                        td= course.startdate.strftime('%b. %d') + course.enddate.strftime(' %b. %d')
+                        =raw generate_week_td course
+                        td
+                          = link_to "$#{course.price}", new_order_path(:course_id => course.id),class: "btn btn-info btn-small btn-block", style: "color: white"
+                          a.btn.btn-small.btn-block.collapsed data-parent="#accordion2" data-toggle="collapse" href="#collapseOne"  ="Detail"
+                        #collapseOne.accordion-body.collapse
+                          .accordion-inner
+                            | #{course.description} <br />
+
+
+  javascript:
+    $('a.btn').on('click', function(e) {
+      e.preventDefault();
+      var url = $(this).attr('href');
+      $('.modal-body').html('<iframe width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" src="' + url + '"></iframe>');
+    });​
+    

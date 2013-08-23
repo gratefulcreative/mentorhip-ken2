@@ -1,0 +1,32 @@
+.search
+  h1 style="text-align: center;font-weight:bold" Discover and connect with kids classes, <br /> camps, programs, mentors and events  
+  /h2 style="text-align: center" camps, programs, mentors and events  
+  br/
+  br/
+  .indexSearchBar= search_form_for @q, :url => search_path, :html => {:method => :get, :class => "form-inline"} do |f| 
+    = f.text_field :topics_cont,  :class=>"input-xlarge",  :placeholder=>"What kind of course do you want?" 
+    = text_field_tag :within , params[:within] , :class=>"input-xlarge" ,  :placeholder=>"How many miles from..." 
+    = text_field_tag :city, params[:city] ,:class=>"input-xlarge",  :placeholder=>"...which City?"
+    = f.submit "Search" ,:class=>"btn"
+
+.container-categories
+  h2 Categories
+  .row-fluid
+    .span4
+      .categories style="background: url('/assets/1.jpg') repeat scroll 50% 50% transparent;"
+        .categoriesName
+          h3.category 
+            =link_to "Sports", "/search?utf8=✓&q%5Btopics_cont%5D=sports" 
+        /.categoriesNameBackground2 style="display: none;"
+        /  ul
+        /    li.noNode
+        /      h3.detailsName
+        /          li=link_to "Sports", "/search?utf8=✓&q%5Btopics_cont%5D=sports" 
+            /    =link_to "Soccer", ""
+            /li.noNode
+            /  h3.detailsName
+            /    =link_to "Basketball", ""
+
+    .span4
+      .categories style=" background: url('/assets/5.jpg') repeat scroll 50% 50% transparent;"
+  

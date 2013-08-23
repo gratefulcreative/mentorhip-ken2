@@ -1,0 +1,8 @@
+li.span3
+  .thumbnail
+    i.tag
+    = link_to image_tag(user.avatar) , users_path(user)
+    .caption
+      h5= user.name
+      h4
+        = link_to "View" , users_path(user) , :class => 'btn'

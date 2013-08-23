@@ -1,0 +1,26 @@
+.row
+  .span2
+    =image_tag user.avatar , :height => '100' , :width => '200'
+    
+    .pagination-centered
+      =link_to user.name,  user_path(user)      
+    p.small
+      font face="verdana" size="1"
+        | 
+  .span6
+        table.table.table-striped
+          tr.info
+            th Course
+            th Date
+            th Days
+            th Time
+            th Price
+          - user.courses.each do |course|
+            tr
+                td=link_to course.name, course_path(course.id)
+                td= course.startdate.strftime('%b. %d') + course.enddate.strftime(' %b. %d')
+                td= course.startdate.strftime('%a') + course.enddate.strftime(', %a')
+                td= course.startdate.strftime("%I:%M%p") + course.enddate.strftime("  -%I:%M%p")
+                td
+                  a.btn.btn-success.btn-small.btn-block href="#" ="$ #{course.price}"
+                  

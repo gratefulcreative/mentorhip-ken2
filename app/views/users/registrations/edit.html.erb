@@ -1,0 +1,26 @@
+
+  
+  <div style="background-color:#EEF6F6; box-shadow: 0 1em 1em gray;padding-bottom:260px;margin:115px 115px 15px;">
+    <h2>Change Your Password</h2>
+    <%= form_for(current_user, :as => current_user, :url => registration_path(current_user), :html => {:style =>"margin-left: 278px;",:method => :put , :class=>"form-horizontal", :multipart => true}) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="control-group n_group">
+        <label class="control-label" for="inputPassword"><%= f.label :new_password %></label>
+        <div class="controls">
+          <%= f.password_field :password, :autocomplete => "off" %>
+        </div>
+      </div>
+      <div class="control-group n_group">
+        <label class="control-label" for="inputPassword"><%= f.label :confirm_password %></label>
+        <div class="controls">
+          <%= f.password_field :password_confirmation, :autocomplete => "off" %>
+        </div>
+      </div>
+      <div class="control-group span2">
+        <div class="controls">
+          <%= f.submit "Change Password", :class=> "btn btn-primary"%>
+        </div>
+      </div>
+    <%end%>
+
+  </div>

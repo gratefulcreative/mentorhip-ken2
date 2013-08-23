@@ -1,0 +1,51 @@
+.hero 
+  .container.home-nav style="margin:0 auto;"
+    .text-center
+        =image_tag 'companies.png'   , :class => 'pull-right' , :alt => "Classes, Camps, Programs, Mentors, Events"
+        =image_tag 'Bird-family.png' , :id => 'bird' , :alt => "Family" , :height => "192" , :width => "303"
+     
+    .row-fluid
+      .span8.offset2.text-center
+        h1 Discover and connect with kids classes, camps, programs, mentors and events
+      .span12.text-center
+        h2 Sign Up Free for our Private Beta Launch
+      .span5.offset1.text-center
+        =link_to 'Parents' , new_user_registration_path , :class => 'btn-large btn-block btn-warning'
+        h3 Discover new interests, connect with experts, develop new talents, enrich your lives.
+      .span5.text-center
+        =link_to 'Providers' , new_user_registration_path(type: 'provider') , :class => 'btn-large btn-block btn-info'
+        h3 Teach what you love.
+
+.container
+  ul.thumbnails
+    li.span4
+      .thumbnail        
+        =image_tag 'signup-interests.gif', :alt=> "Discover new interests"
+        h1 Discover new interests
+        h4 Browse classes, programs, camps and events available in your area.
+    li.span4
+      .thumbnail
+        =image_tag 'signup-experts.gif' ,:alt=> "Connect with experts"        
+        h1 Connect with experts
+        h4 Connect with experts, mentors, and class teachers who teach what they love.
+    li.span4
+      .thumbnail
+        =image_tag 'signup-talents.gif' , :alt=>"Develop new talents and abilities"        
+        h1 Develop talents and abilities
+        h4 Develop your child’s skills and abilities to help them develop talents, gain confidence, and achieve their goals.
+    li.span4
+      .thumbnail
+        =image_tag 'signup-enrich.gif' , :alt=> "Enrich your lives"
+        h1 Enrich your lives
+        h4 Enable your child to enjoy a new activity and make new friends.
+    li.span4
+      .thumbnail
+        =image_tag 'signup-reputation.gif' , :alt => "Reputation based"        
+        h1 Coming soon... Reputation based
+        h4 Coaches, teachers, and mentors develop an online reputation tied to real customers.
+    li.span4
+      .thumbnail
+        =image_tag 'signup-easy.gif' , :alt=> "Easy and convenient"
+        
+        h1 Easy and convenient
+        h4 Connect with ease, no more jumping between program guides and websites. Class schedules, waivers, and purchasing will be available soon.
