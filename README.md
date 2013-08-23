@@ -1,5 +1,4 @@
-# MentorHip 
-This is the code base for MentorHip
+mentorhip-ken2
+==============
 
-Production: http://mentorhip-production.herokuapp.com
-Staging: http://mentorhip-staging.herokuapp.com/
+mentorhip-ken2
